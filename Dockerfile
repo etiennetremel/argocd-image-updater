@@ -12,13 +12,15 @@ RUN mkdir -p dist && \
 
 FROM alpine:latest
 
+# there is probably a better way to do that
 RUN apk update && \
     apk upgrade && \
-    apk add ca-certificates git openssh-client python3 py3-pip tini && \
-    pip3 install --upgrade pip && \
-    pip3 install awscli && \
+    apk add ca-certificates git openssh-client python3 tini && \
+    python3 -m venv .venv && \
+    source .venv/bin/activate && \
+    python3 -m pip install awscli && \
     apk add gcc musl-dev python3-dev libffi-dev openssl-dev cargo make && \
-    pip3 install azure-cli && \
+    python3 -m pip install azure-cli && \
     rm -rf /var/cache/apk/*
 
 RUN mkdir -p /usr/local/bin
