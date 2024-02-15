@@ -12,6 +12,10 @@ RUN mkdir -p dist && \
 
 FROM alpine:latest
 
+ENV VIRTUAL_ENV=/opt/venv
+RUN python3 -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
 RUN apk add --no-cache \
       ca-certificates \
       git \
