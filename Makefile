@@ -1,4 +1,4 @@
-IMAGE_NAMESPACE?=gcr.io/etiennetremel
+IMAGE_NAMESPACE?=ghcr.io/etiennetremel
 IMAGE_NAME=argocd-image-updater
 IMAGE_TAG?=latest
 ifdef IMAGE_NAMESPACE
