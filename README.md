@@ -22,6 +22,21 @@ and deployment to match the Workload Identity:
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  name: argocd-image-updater-config
+data:
+  registries.conf: |
+    registries:
+      - name: acr-name
+        prefix: acr-name.azurecr.io
+        api_url: https://acr-name.azurecr.io
+        default: yes
+        credentials: ext:/app/auth/auth.sh
+```
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
   name: argocd-image-updater-auth
 data:
   auth.sh: |
