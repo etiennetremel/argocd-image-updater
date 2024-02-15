@@ -27,8 +27,6 @@ RUN apk add --no-cache \
       openssl-dev \
       cargo \
       make && \
-    python3 -m venv .venv && \
-    source .venv/bin/activate && \
     python3 -m pip install azure-cli && \
     rm -rf /var/cache/apk/*
 
